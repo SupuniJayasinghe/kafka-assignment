@@ -48,7 +48,7 @@ public class RetryProcessor {
                     System.out.println("Retrying Order: " + order);
 
                     if (price > 80) {
-                        System.out.println("❌ Still invalid after retry → sending to DLQ");
+                        System.out.println("Still invalid after retry → sending to DLQ");
 
                         dlqProducer.send(new ProducerRecord<>(
                                 "orders-dlq",
@@ -60,7 +60,7 @@ public class RetryProcessor {
                     System.out.println("✅ Retry successful: Order is now valid.");
 
                 } catch (Exception ex) {
-                    System.out.println("❌ Retry failed completely → sending to DLQ");
+                    System.out.println("Retry failed completely → sending to DLQ");
 
                     dlqProducer.send(new ProducerRecord<>(
                             "orders-dlq",
